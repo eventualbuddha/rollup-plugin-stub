@@ -1,0 +1,35 @@
+{
+  "name": "rollup-plugin-stub",
+  "version": "1.0.0",
+  "description": "Stub exported bindings in a module.",
+  "main": "dist/rollup-plugin-stub.cjs.js",
+  "jsnext:main": "dist/rollup-plugin-stub.es6.js",
+  "scripts": {
+    "build": "./script/build",
+    "pretest": "npm run build",
+    "test": "mocha"
+  },
+  "keywords": [
+    "rollup",
+    "plugin",
+    "stub",
+    "mock"
+  ],
+  "author": "Brian Donovan",
+  "license": "MIT",
+  "files": [
+    "dist/"
+  ],
+  "devDependencies": {
+    "babel-plugin-transform-es2015-parameters": "^6.1.18",
+    "babel-preset-es2015-rollup": "^1.0.0",
+    "mocha": "^2.3.4",
+    "rollup": "^0.21.0",
+    "rollup-plugin-babel": "^2.1.0"
+  },
+  "dependencies": {
+    "acorn": "^2.6.4",
+    "magic-string": "^0.8.0",
+    "rollup-pluginutils": "^1.2.0"
+  }
+}
