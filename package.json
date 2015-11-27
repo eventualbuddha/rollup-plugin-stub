@@ -7,6 +7,7 @@
   "scripts": {
     "build": "./script/build",
     "pretest": "npm run build",
+    "prepublish": "npm run build",
     "test": "mocha"
   },
   "keywords": [
