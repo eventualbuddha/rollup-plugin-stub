@@ -37,7 +37,7 @@ export function join(...parts) {
 export const SEP = '/';
 ```
 
-You'll be able to stub any exports from that module, like so:
+You'll be able to stub any named exports from that module, like so:
 
 ```js
 // main.js
@@ -47,6 +47,8 @@ console.log(join('a', 'b', 'c')); // 'a/b/c'
 stub_SEP('!');
 console.log(join('a', 'b', 'c')); // 'a!b!c'
 ```
+
+Note that this plugin takes advantage of the fact that ES modules use bindings for named exports. Since the default export is not bound, this plugin does not work with default exports.
 
 In tests you might want to stub a value for one test and reset it afterward. You can do that too:
 
