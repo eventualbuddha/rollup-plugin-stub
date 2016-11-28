@@ -84,4 +84,13 @@ describe('stub', () => {
       eq(module.exports.oneAfterReset, 1);
     });
   });
+
+  it('does not throw on `export {varName as default}``', () => {
+    return rollup({
+      entry: 'test/examples/export-default-brackets/main.js',
+      plugins: [
+        stub({ include: 'test/examples/export-default-brackets/main.js' })
+      ]
+    });
+  });
 });
