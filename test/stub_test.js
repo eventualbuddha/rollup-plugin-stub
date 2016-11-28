@@ -1,4 +1,5 @@
 const eq = require('assert').strictEqual;
+const notEq = require('assert').notStrictEqual;
 const rollup = require('rollup').rollup;
 const runInNewContext = require('vm').runInNewContext;
 const stub = require('../dist/rollup-plugin-stub.cjs');
@@ -93,4 +94,80 @@ describe('stub', () => {
       ]
     });
   });
+
+  describe('Class stubbing', () => {
+    it('allows stubbing exported Class declarations', () => {
+      return rollup({
+        entry: 'test/examples/exported-class/main.js',
+        plugins: [
+          stub({ include: 'test/examples/exported-class/*.js' })
+        ]
+      }).then(bundle => {
+        const result = bundle.generate({ format: 'cjs' });
+        const exports = {};
+        const module = { exports };
+        runInNewContext(result.code, { module, exports });
+
+        const testClassInstace = new module.exports.ClassBeforeStub();
+        const stubClassInstace = new module.exports.ClassAfterStub();
+
+        eq(testClassInstace.getTest(), 0);
+        eq(stubClassInstace.getTest(), 42);
+      });
+    });
+
+    it('allows resetting stubbed Class declarations', () => {
+      return rollup({
+        entry: 'test/examples/exported-class/main.js',
+        plugins: [
+          stub({ include: 'test/examples/exported-class/*.js' })
+        ]
+      }).then(bundle => {
+        const result = bundle.generate({ format: 'cjs' });
+        const exports = {};
+        const module = { exports };
+        runInNewContext(result.code, { module, exports });
+
+        const testClassInstace = new module.exports.ClassBeforeStub();
+        const resetClassInstace = new module.exports.ClassAfterReset();
+
+        eq(testClassInstace.getTest(), 0);
+        eq(resetClassInstace.getTest(), 0);
+      });
+    });
+
+    it('stubbed Class is different from the original', () => {
+      return rollup({
+        entry: 'test/examples/exported-class/main.js',
+        plugins: [
+          stub({ include: 'test/examples/exported-class/*.js' })
+        ]
+      }).then(bundle => {
+        const result = bundle.generate({ format: 'cjs' });
+        const exports = {};
+        const module = { exports };
+        runInNewContext(result.code, { module, exports });
+
+        notEq(module.exports.ClassBeforeStub, module.exports.ClassAfterStub);
+      });
+    });
+
+    it('reset stubbed Class is exactly the same as original', () => {
+      return rollup({
+        entry: 'test/examples/exported-class/main.js',
+        plugins: [
+          stub({ include: 'test/examples/exported-class/*.js' })
+        ]
+      }).then(bundle => {
+        const result = bundle.generate({ format: 'cjs' });
+        const exports = {};
+        const module = { exports };
+        runInNewContext(result.code, { module, exports });
+
+        eq(module.exports.ClassBeforeStub, module.exports.ClassAfterReset);
+      });
+    });
+
+  });
+
 });

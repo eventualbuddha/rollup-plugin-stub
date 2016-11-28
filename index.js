@@ -46,6 +46,8 @@ export default function stub(options={}) {
             });
           } else if (node.declaration.type === 'FunctionDeclaration') {
             bindings.push(node.declaration.id.name);
+          } else if (node.declaration.type === 'ClassDeclaration') {
+            bindings.push(node.declaration.id.name);
           }
         }
       });
@@ -65,5 +67,3 @@ export default function stub(options={}) {
     }
   }
 }
-
-
