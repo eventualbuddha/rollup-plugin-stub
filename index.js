@@ -27,6 +27,11 @@ export default function stub(options={}) {
 
       ast.body.forEach(node => {
         if (node.type === 'ExportNamedDeclaration') {
+          // Handle null declarations
+          // Example: `export { varName as default };`
+          if (node.declaration == null) {
+          	return;
+          }
           // Collect binding names and ensure we can reassign them.
           if (node.declaration.type === 'VariableDeclaration') {
             if (node.declaration.kind === 'const') {
