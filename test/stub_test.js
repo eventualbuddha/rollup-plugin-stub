@@ -2,7 +2,7 @@ const eq = require('assert').strictEqual;
 const notEq = require('assert').notStrictEqual;
 const rollup = require('rollup').rollup;
 const runInNewContext = require('vm').runInNewContext;
-const stub = require('../dist/rollup-plugin-stub.cjs');
+const stub = require('../');
 
 describe('stub', () => {
   it('allows stubbing exported variables', () => {

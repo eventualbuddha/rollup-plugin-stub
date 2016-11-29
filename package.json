@@ -1,14 +1,15 @@
 {
   "name": "rollup-plugin-stub",
-  "version": "1.1.1",
+  "version": "0.0.0-development",
   "description": "Stub exported bindings in a module.",
-  "main": "dist/rollup-plugin-stub.cjs.js",
-  "jsnext:main": "dist/rollup-plugin-stub.es6.js",
+  "main": "dist/rollup-plugin-stub.js",
+  "module": "dist/rollup-plugin-stub.mjs",
   "scripts": {
-    "build": "./script/build",
+    "build": "rollup -c",
     "pretest": "npm run build",
     "prepublish": "npm run build",
-    "test": "mocha"
+    "test": "mocha",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "keywords": [
     "rollup",
@@ -26,11 +27,16 @@
     "babel-preset-es2015-rollup": "^1.2.0",
     "mocha": "^3.2.0",
     "rollup": "^0.36.4",
-    "rollup-plugin-babel": "^2.6.1"
+    "rollup-plugin-babel": "^2.6.1",
+    "semantic-release": "^6.3.2"
   },
   "dependencies": {
     "acorn": "^4.0.3",
     "magic-string": "^0.17.0",
     "rollup-pluginutils": "^1.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eventualbuddha/rollup-plugin-stub.git"
   }
 }
