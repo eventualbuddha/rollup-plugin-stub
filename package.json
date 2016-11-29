@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-stub",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Stub exported bindings in a module.",
   "main": "dist/rollup-plugin-stub.cjs.js",
   "jsnext:main": "dist/rollup-plugin-stub.es6.js",
