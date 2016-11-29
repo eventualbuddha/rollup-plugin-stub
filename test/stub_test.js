@@ -167,7 +167,5 @@ describe('stub', () => {
         eq(module.exports.ClassBeforeStub, module.exports.ClassAfterReset);
       });
     });
-
   });
-
 });

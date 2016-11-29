@@ -1,5 +1,5 @@
 import MagicString from 'magic-string';
-import { attachScopes, createFilter } from 'rollup-pluginutils';
+import { createFilter } from 'rollup-pluginutils';
 import { parse } from 'acorn';
 
 export default function stub(options={}) {
