@@ -1,5 +1,7 @@
 # rollup-plugin-stub [![Build Status](https://travis-ci.org/eventualbuddha/rollup-plugin-stub.svg?branch=master)](https://travis-ci.org/eventualbuddha/rollup-plugin-stub) [![npm](https://img.shields.io/npm/v/rollup-plugin-stub.svg)](https://www.npmjs.com/package/rollup-plugin-stub)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/eventualbuddha/rollup-plugin-stub.svg)](https://greenkeeper.io/)
+
 Stub module exports at runtime when bundling with [Rollup](https://github.com/rollup/rollup).
 
 ## Install
